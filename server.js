@@ -13,7 +13,7 @@ app.use(cors())
 app.use(bodyParser.json({limit:'50mb'}));
 
 
-mongoose.connect('mongodb://localhost/yvetteeric', {useNewUrlParser: true});
+mongoose.connect('mongodb://localhost/BOBOSTEST', {useNewUrlParser: true});
 const connection = mongoose.connection;
 
 connection.once('open', function(){
@@ -34,17 +34,17 @@ photoboothRoutes.route("/").post(function(req, res,next){
     }).sort({date:-1}).limit(60)
 });  
 
-   photoboothRoutes.route("/download").get(function(req,res,next){
+/*    photoboothRoutes.route("/download").get(function(req,res,next){
     PhotoboothModel.find({}, function(err,images){
         res.json(images);
     }).skip(500)
-});  
+});   */
 
-/*   photoboothRoutes.route("/download").get(function(req,res,next){
+   photoboothRoutes.route("/download").get(function(req,res,next){
     PhotoboothModel.find({}, function(err,images){
         res.json(images);
     }).limit(500)
-});  */
+}); 
 
 // Posting to the database
 photoboothRoutes.route("/share").post(function(req, res,next){
